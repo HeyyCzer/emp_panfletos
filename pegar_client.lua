@@ -31,8 +31,6 @@ Citizen.CreateThread(function()
 							end)
 						end
 					end
-				else
-					sleepThread = 1000
 				end
 			else
 				sleepThread = 1000
