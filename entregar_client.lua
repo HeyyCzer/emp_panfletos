@@ -9,9 +9,7 @@ vRP = Proxy.getInterface("vRP")
 local blips = false
 local servico = false
 local selecionado = 0
-local CoordenadaX = 55.50
-local CoordenadaY = 114.12
-local CoordenadaZ = 79.19
+local entregaBlip = cfg.entregaBlip
 
 local necessaryVehicle = cfg.necessaryVehicle
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -173,10 +171,10 @@ Citizen.CreateThread(function()
 		if not servico then
 			local ped = PlayerPedId()
 			local x, y, z = table.unpack(GetEntityCoords(ped))
-			local distance = GetDistanceBetweenCoords(CoordenadaX, CoordenadaY, CoordenadaZ, x, y, z, true)
+			local distance = GetDistanceBetweenCoords(entregaBlip.x, entregaBlip.y, entregaBlip.z, x, y, z, true)
 
 			if distance <= 6.0 then
-				DrawMarker(23, CoordenadaX, CoordenadaY, CoordenadaZ - 0.97, 0, 0, 0, 0, 0, 0, 1.0, 1.0, 0.5, 240, 200, 80, 20, 0, 0, 0, 0)
+				DrawMarker(23, entregaBlip.x, entregaBlip.y, entregaBlip.z - 0.97, 0, 0, 0, 0, 0, 0, 1.0, 1.0, 0.5, 240, 200, 80, 20, 0, 0, 0, 0)
 				if distance <= 1.2 then
 					DrawTxtabcdefg("PRESSIONE ~b~E~w~ PARA INICIAR ENTREGAS", 4, 0.5, 0.93, 0.50, 255, 255, 255, 180)
 					if IsControlJustPressed(0, 38) then
